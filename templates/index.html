@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome Back
+{% endblock %}
+
+{% block main %}
+
+<h2>Available Cash: {{ cash }}</h2>
+<h2>Total Assets: {{ assets }}</h2>
+
+<table class="table" style="width:100%">
+  <tr>
+    <th>Symbol</th>
+    <th>Shares</th>
+    <th>Purchase Date</th>
+    <th>Purchase Price</th>
+    <th>Current Price</th>
+    <th>% Change</th>
+  </tr>
+    {% for stocks in portfolio %}
+  <tr>
+    <td>{{ stocks["symbol"] }}</td>
+    <td>{{ stocks["amount"] }}</td>
+    <td>{{ stocks["purchase_date"] }}</td>
+    <td>{{ stocks["purchase_price"] }}</td>
+    <td>{{ stocks["current_price"] }}</td>
+      {% if stocks["change"] >= 0 %}
+        <td style="color:green;">{{ stocks["change"] }}</td>
+      {% else %}
+        <td style="color:red;">{{ stocks["change"] }}</td>
+      {% endif %}
+  </tr>
+    {% endfor %}
+</table>
+{% endblock %}

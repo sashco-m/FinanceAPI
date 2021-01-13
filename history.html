@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome Back
+{% endblock %}
+
+{% block main %}
+
+<table style="width:100%">
+  <tr>
+    <th>Symbol</th>
+    <th>Shares</th>
+    <th>Purchase Date</th>
+    <th>Purchase Price</th>
+    <th>Current Price</th>
+  </tr>
+    {% for stocks in portfolio %}
+  <tr>
+    <td>{{ stocks["symbol"] }}</td>
+    <td>{{ stocks["amount"] }}</td>
+    <td>{{ stocks["date"] }}</td>
+    <td>{{ stocks["price"] }}</td>
+    <td>{{ stocks["type"] }}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% endblock %}
